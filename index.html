@@ -8,7 +8,7 @@
 
     <meta
         name="description"
-        content="Digital Workshop is crafting a brand new digital experience. Join the launch list."
+        content="Digital Workshop is crafting a brand new digital experience."
     >
 
     <link
@@ -26,16 +26,13 @@
             --secondary-accent: #ffdb57;
             --tertiary-accent: #44ded0;
 
-            --success: #44ded0;
-            --error: #ff6a73;
-
             --border-color: #1a1a1a;
 
             --border-width: 3px;
             --border-radius: 8px;
 
             --hard-shadow: 6px 6px 0 var(--border-color);
-            --hard-shadow-small: 3px 3px 0 var(--border-color);
+            --small-shadow: 3px 3px 0 var(--border-color);
         }
 
         * {
@@ -49,26 +46,28 @@
             padding: 20px;
 
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
 
             position: relative;
             overflow-x: hidden;
 
             font-family: "Space Grotesk", sans-serif;
             color: var(--border-color);
+
             background: var(--bg-color);
         }
 
-        /* =========================================
-           BACKGROUND DECORATIONS
-        ========================================= */
+        /* =========================
+           DECORATIONS
+        ========================= */
 
         .decor {
             position: absolute;
             z-index: 0;
 
             border: var(--border-width) solid var(--border-color);
+
             pointer-events: none;
         }
 
@@ -79,10 +78,10 @@
             top: 15%;
             left: 15%;
 
-            background: var(--tertiary-accent);
             border-radius: 50%;
+            background: var(--tertiary-accent);
 
-            box-shadow: var(--hard-shadow-small);
+            box-shadow: var(--small-shadow);
 
             animation: float 4s ease-in-out infinite;
         }
@@ -98,7 +97,7 @@
 
             transform: rotate(15deg);
 
-            box-shadow: var(--hard-shadow-small);
+            box-shadow: var(--small-shadow);
 
             animation: rotateFloat 5s ease-in-out infinite;
         }
@@ -110,6 +109,7 @@
             border: none;
 
             color: var(--secondary-accent);
+
             font-size: 2rem;
             font-weight: 700;
 
@@ -118,9 +118,9 @@
             animation: spin 6s linear infinite;
         }
 
-        /* =========================================
+        /* =========================
            MAIN CARD
-        ========================================= */
+        ========================= */
 
         .container {
             width: 100%;
@@ -140,12 +140,12 @@
 
             box-shadow: var(--hard-shadow);
 
-            animation: cardEnter 0.6s cubic-bezier(.2,.8,.2,1);
+            animation: cardEnter 0.6s cubic-bezier(.2, .8, .2, 1);
         }
 
-        /* =========================================
+        /* =========================
            LOGO
-        ========================================= */
+        ========================= */
 
         .logo-wrapper {
             display: inline-flex;
@@ -153,14 +153,14 @@
             justify-content: center;
 
             padding: 14px 18px;
-            margin-bottom: 28px;
+            margin-bottom: 26px;
 
             background: var(--logo-bg);
 
             border: var(--border-width) solid var(--border-color);
             border-radius: var(--border-radius);
 
-            box-shadow: var(--hard-shadow-small);
+            box-shadow: var(--small-shadow);
 
             transition:
                 transform 0.15s ease,
@@ -179,12 +179,13 @@
             height: auto;
 
             max-height: 90px;
+
             object-fit: contain;
         }
 
-        /* =========================================
+        /* =========================
            TAG
-        ========================================= */
+        ========================= */
 
         .tag {
             display: inline-block;
@@ -198,17 +199,18 @@
             border: var(--border-width) solid var(--border-color);
             border-radius: 20px;
 
-            box-shadow: var(--hard-shadow-small);
+            box-shadow: var(--small-shadow);
 
             font-size: 0.82rem;
             font-weight: 700;
+
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        /* =========================================
+        /* =========================
            TYPOGRAPHY
-        ========================================= */
+        ========================= */
 
         h1 {
             margin-bottom: 16px;
@@ -216,11 +218,13 @@
             font-size: clamp(2.7rem, 8vw, 4.5rem);
             font-weight: 700;
             line-height: 0.95;
+
             letter-spacing: -2px;
         }
 
         p {
             max-width: 500px;
+
             margin: 0 auto 30px;
 
             font-size: 1.08rem;
@@ -228,16 +232,15 @@
             line-height: 1.5;
         }
 
-        /* =========================================
+        /* =========================
            FORM
-        ========================================= */
+        ========================= */
 
         .notify-form {
             display: flex;
             align-items: flex-start;
-            justify-content: center;
-            gap: 12px;
 
+            gap: 12px;
             width: 100%;
         }
 
@@ -281,7 +284,7 @@
         }
 
         .email-input.invalid {
-            border-color: var(--error);
+            border-color: var(--primary-accent);
 
             animation: shake 0.25s ease;
         }
@@ -303,9 +306,9 @@
             display: block;
         }
 
-        /* =========================================
+        /* =========================
            BUTTON
-        ========================================= */
+        ========================= */
 
         .notify-button {
             flex-shrink: 0;
@@ -344,19 +347,22 @@
 
         .notify-button:disabled {
             cursor: wait;
-            opacity: 0.7;
+            opacity: 0.75;
         }
 
         .notify-button.success {
-            background: var(--success);
+            background: var(--tertiary-accent);
         }
 
-        /* =========================================
+        /* =========================
            ALERT
-        ========================================= */
+        ========================= */
 
         .alert {
             display: none;
+
+            align-items: center;
+            gap: 10px;
 
             margin-top: 22px;
             padding: 14px 18px;
@@ -364,10 +370,11 @@
             border: var(--border-width) solid var(--border-color);
             border-radius: var(--border-radius);
 
-            box-shadow: var(--hard-shadow-small);
+            box-shadow: var(--small-shadow);
 
             font-size: 0.9rem;
             font-weight: 700;
+
             text-align: left;
 
             animation: alertEnter 0.25s ease;
@@ -375,21 +382,18 @@
 
         .alert.visible {
             display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .alert.success {
-            background: var(--success);
+            background: var(--tertiary-accent);
         }
 
         .alert.error {
-            background: var(--error);
+            background: var(--primary-accent);
         }
 
         .alert-icon {
             display: inline-flex;
-
             align-items: center;
             justify-content: center;
 
@@ -398,17 +402,17 @@
 
             flex-shrink: 0;
 
-            background: var(--border-color);
             color: white;
+            background: var(--border-color);
 
             border-radius: 50%;
 
             font-size: 0.75rem;
         }
 
-        /* =========================================
+        /* =========================
            ANIMATIONS
-        ========================================= */
+        ========================= */
 
         @keyframes cardEnter {
             from {
@@ -478,11 +482,12 @@
             }
         }
 
-        /* =========================================
+        /* =========================
            MOBILE
-        ========================================= */
+        ========================= */
 
         @media (max-width: 600px) {
+
             body {
                 padding: 16px;
             }
@@ -502,13 +507,10 @@
             .notify-button {
                 width: 100%;
             }
-
-            h1 {
-                letter-spacing: -1.5px;
-            }
         }
 
         @media (max-width: 480px) {
+
             .decor {
                 display: none;
             }
@@ -516,21 +518,36 @@
             .logo {
                 width: min(230px, 70vw);
             }
+
+            h1 {
+                letter-spacing: -1.5px;
+            }
+        }
+
+        /* Accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Decorative background elements -->
+    <!-- Decorative background shapes -->
     <div class="decor decor-1"></div>
     <div class="decor decor-2"></div>
     <div class="decor decor-3">✦</div>
 
-    <!-- Main content -->
+
     <main class="container">
 
-        <!-- Put logo.png in the same folder as this index.html -->
+        <!-- Digital Workshop logo -->
         <div class="logo-wrapper">
             <img
                 src="./logo.png"
@@ -539,24 +556,62 @@
             >
         </div>
 
+
         <div class="tag">
             Something is brewing
         </div>
 
+
         <h1>
             Coming Soon
         </h1>
+
 
         <p>
             We are currently crafting a brand new experience.
             Drop your email below and we'll let you know the second we launch.
         </p>
 
+
+        <!-- Web3Forms -->
         <form
-            class="notify-form"
             id="notifyForm"
+            class="notify-form"
+            action="https://api.web3forms.com/submit"
+            method="POST"
             novalidate
         >
+
+            <!-- Web3Forms access key -->
+            <input
+                type="hidden"
+                name="access_key"
+                value="e335a411-dfed-4038-b0e0-1c949511cfe5"
+            >
+
+            <!-- Email subject -->
+            <input
+                type="hidden"
+                name="subject"
+                value="New Digital Workshop Subscriber"
+            >
+
+            <!-- Prevent Web3Forms from redirecting -->
+            <input
+                type="hidden"
+                name="redirect"
+                value="false"
+            >
+
+            <!-- Honeypot spam protection -->
+            <input
+                type="checkbox"
+                name="botcheck"
+                class="hidden"
+                style="display:none"
+            >
+
+
             <div class="input-group">
 
                 <input
@@ -580,174 +635,277 @@
 
             </div>
 
+
             <button
-                type="submit"
-                class="notify-button"
                 id="notifyButton"
+                class="notify-button"
+                type="submit"
             >
-                <span id="buttonText">Notify Me</span>
+                <span id="buttonText">
+                    Notify Me
+                </span>
             </button>
+
         </form>
 
-        <!-- Uniform status alert -->
+
+        <!-- Status alert -->
         <div
             id="alert"
             class="alert"
             role="status"
             aria-live="polite"
         >
-            <span class="alert-icon" id="alertIcon">✓</span>
+            <span
+                id="alertIcon"
+                class="alert-icon"
+            >
+                ✓
+            </span>
+
             <span id="alertText"></span>
         </div>
 
     </main>
 
+
     <script>
-        /*
-         * IMPORTANT:
-         *
-         * Replace this with your Cloudflare Worker URL.
-         *
-         * Example:
-         * https://digital-workshop-signup.yourname.workers.dev
-         */
-        const WORKER_URL = "YOUR_CLOUDFLARE_WORKER_URL";
 
         const form = document.getElementById("notifyForm");
-        const emailInput = document.getElementById("email");
-        const emailError = document.getElementById("emailError");
 
-        const button = document.getElementById("notifyButton");
-        const buttonText = document.getElementById("buttonText");
+        const emailInput =
+            document.getElementById("email");
 
-        const alertBox = document.getElementById("alert");
-        const alertText = document.getElementById("alertText");
-        const alertIcon = document.getElementById("alertIcon");
+        const emailError =
+            document.getElementById("emailError");
+
+        const button =
+            document.getElementById("notifyButton");
+
+        const buttonText =
+            document.getElementById("buttonText");
+
+        const alertBox =
+            document.getElementById("alert");
+
+        const alertText =
+            document.getElementById("alertText");
+
+        const alertIcon =
+            document.getElementById("alertIcon");
 
 
+        /*
+         * Email validation
+         */
         function isValidEmail(email) {
-            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+                .test(email);
+
         }
 
 
+        /*
+         * Show status alert
+         */
         function showAlert(type, message) {
-            alertBox.className = "alert visible " + type;
 
-            alertText.textContent = message;
+            alertBox.className =
+                "alert visible " + type;
 
-            if (type === "success") {
-                alertIcon.textContent = "✓";
-            } else {
-                alertIcon.textContent = "!";
-            }
+            alertText.textContent =
+                message;
+
+            alertIcon.textContent =
+                type === "success"
+                    ? "✓"
+                    : "!";
+
         }
 
 
+        /*
+         * Hide status alert
+         */
         function hideAlert() {
-            alertBox.className = "alert";
+
+            alertBox.className =
+                "alert";
+
         }
 
 
+        /*
+         * Validation error
+         */
         function showValidationError() {
+
             emailInput.classList.add("invalid");
+
             emailError.classList.add("visible");
+
         }
 
 
+        /*
+         * Clear validation error
+         */
         function clearValidationError() {
+
             emailInput.classList.remove("invalid");
+
             emailError.classList.remove("visible");
+
         }
 
 
-        emailInput.addEventListener("input", () => {
-            clearValidationError();
-            hideAlert();
-        });
+        /*
+         * Typing clears previous errors
+         */
+        emailInput.addEventListener(
+            "input",
+            () => {
 
+                clearValidationError();
+                hideAlert();
 
-        form.addEventListener("submit", async (event) => {
-
-            event.preventDefault();
-
-            clearValidationError();
-            hideAlert();
-
-            const email = emailInput.value.trim();
-
-            /* Client-side validation */
-            if (!email || !isValidEmail(email)) {
-                showValidationError();
-                emailInput.focus();
-                return;
             }
-
-            /* Prevent accidental duplicate submissions */
-            button.disabled = true;
-            buttonText.textContent = "Sending...";
-
-            try {
-
-                const response = await fetch(WORKER_URL, {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-
-                    body: JSON.stringify({
-                        email: email
-                    })
-                });
+        );
 
 
-                const data = await response.json().catch(() => ({}));
+        /*
+         * Submit form
+         */
+        form.addEventListener(
+            "submit",
+            async (event) => {
+
+                event.preventDefault();
+
+                clearValidationError();
+                hideAlert();
 
 
-                if (!response.ok) {
-                    throw new Error(
-                        data.message || "Something went wrong."
+                const email =
+                    emailInput.value.trim();
+
+
+                /*
+                 * Validate email before
+                 * contacting Web3Forms
+                 */
+                if (
+                    !email ||
+                    !isValidEmail(email)
+                ) {
+
+                    showValidationError();
+
+                    emailInput.focus();
+
+                    return;
+
+                }
+
+
+                /*
+                 * Loading state
+                 */
+                button.disabled = true;
+
+                buttonText.textContent =
+                    "Sending...";
+
+
+                try {
+
+                    const formData =
+                        new FormData(form);
+
+
+                    const response =
+                        await fetch(
+                            form.action,
+                            {
+                                method: "POST",
+                                body: formData
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    /*
+                     * Web3Forms reports
+                     * success through this field.
+                     */
+                    if (
+                        !response.ok ||
+                        !data.success
+                    ) {
+
+                        throw new Error(
+                            data.message ||
+                            "Submission failed."
+                        );
+
+                    }
+
+
+                    /*
+                     * SUCCESS
+                     */
+                    showAlert(
+                        "success",
+                        "EMAIL SENT SUCCESSFULLY"
                     );
-                }
 
 
-                /*
-                 * Success
-                 */
-                showAlert(
-                    "success",
-                    "EMAIL SENT SUCCESSFULLY"
-                );
+                    emailInput.value = "";
 
-                emailInput.value = "";
+                    buttonText.textContent =
+                        "Subscribed";
 
-                buttonText.textContent = "Subscribed";
-                button.classList.add("success");
+                    button.classList.add(
+                        "success"
+                    );
 
 
-            } catch (error) {
+                    /*
+                     * Keep successful state
+                     * so the visitor doesn't
+                     * accidentally submit twice.
+                     */
+                    button.disabled = true;
 
-                console.error("Signup error:", error);
 
-                showAlert(
-                    "error",
-                    "COULDN'T SEND EMAIL — PLEASE TRY AGAIN"
-                );
+                } catch (error) {
 
-                buttonText.textContent = "Try Again";
+                    console.error(
+                        "Web3Forms error:",
+                        error
+                    );
 
-            } finally {
 
-                /*
-                 * Keep successful button state disabled.
-                 * Re-enable it after an error.
-                 */
-                if (!button.classList.contains("success")) {
+                    showAlert(
+                        "error",
+                        "COULDN'T SEND EMAIL — PLEASE TRY AGAIN"
+                    );
+
+
+                    buttonText.textContent =
+                        "Try Again";
+
                     button.disabled = false;
-                }
-            }
 
-        });
+                }
+
+            }
+        );
+
     </script>
 
 </body>
