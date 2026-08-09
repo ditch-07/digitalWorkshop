@@ -3,25 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Digital Workshop | Coming Soon</title>
-    <!-- Using Space Grotesk font for that clean, geometric neo-brutalist feel -->
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-    
+
+    <meta
+        name="description"
+        content="Digital Workshop is crafting a brand new digital experience. Join the launch list."
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet"
+    >
+
     <style>
         :root {
-            /* Color Palette derived from the Neo Brutalism style */
             --bg-color: #faede3;
             --card-bg: #ffffff;
-            --primary-accent: #ff6a73; /* Vibrant Red */
-            --secondary-accent: #ffdb57; /* Mustard Yellow */
-            --tertiary-accent: #44ded0; /* Teal/Cyan */
+            --logo-bg: #fff8ed;
+
+            --primary-accent: #ff6a73;
+            --secondary-accent: #ffdb57;
+            --tertiary-accent: #44ded0;
+
+            --success: #44ded0;
+            --error: #ff6a73;
+
             --border-color: #1a1a1a;
-            
-            /* Border and Shadow constants */
+
             --border-width: 3px;
             --border-radius: 8px;
-            --hard-shadow: 5px 5px 0px 0px var(--border-color);
-            --hard-shadow-hover: 2px 2px 0px 0px var(--border-color);
+
+            --hard-shadow: 6px 6px 0 var(--border-color);
+            --hard-shadow-small: 3px 3px 0 var(--border-color);
         }
 
         * {
@@ -31,185 +45,710 @@
         }
 
         body {
-            font-family: 'Space Grotesk', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--border-color);
+            min-height: 100vh;
+            padding: 20px;
+
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-            overflow-x: hidden;
+
             position: relative;
+            overflow-x: hidden;
+
+            font-family: "Space Grotesk", sans-serif;
+            color: var(--border-color);
+            background: var(--bg-color);
         }
 
-        /* Decorative Background Elements */
+        /* =========================================
+           BACKGROUND DECORATIONS
+        ========================================= */
+
         .decor {
             position: absolute;
-            border: var(--border-width) solid var(--border-color);
             z-index: 0;
+
+            border: var(--border-width) solid var(--border-color);
+            pointer-events: none;
         }
 
         .decor-1 {
             width: 40px;
             height: 40px;
-            background-color: var(--tertiary-accent);
-            border-radius: 50%;
+
             top: 15%;
             left: 15%;
-            box-shadow: 3px 3px 0px 0px var(--border-color);
+
+            background: var(--tertiary-accent);
+            border-radius: 50%;
+
+            box-shadow: var(--hard-shadow-small);
+
+            animation: float 4s ease-in-out infinite;
         }
 
         .decor-2 {
             width: 30px;
             height: 30px;
-            background-color: var(--primary-accent);
-            bottom: 20%;
+
             right: 15%;
+            bottom: 20%;
+
+            background: var(--primary-accent);
+
             transform: rotate(15deg);
-            box-shadow: 3px 3px 0px 0px var(--border-color);
+
+            box-shadow: var(--hard-shadow-small);
+
+            animation: rotateFloat 5s ease-in-out infinite;
         }
-        
+
         .decor-3 {
-            font-size: 2rem;
-            border: none;
             top: 25%;
             right: 20%;
+
+            border: none;
+
             color: var(--secondary-accent);
-            text-shadow: 2px 2px 0px var(--border-color);
+            font-size: 2rem;
+            font-weight: 700;
+
+            text-shadow: 2px 2px 0 var(--border-color);
+
+            animation: spin 6s linear infinite;
         }
 
-        /* Main Container */
+        /* =========================================
+           MAIN CARD
+        ========================================= */
+
         .container {
-            background-color: var(--secondary-accent);
-            border: var(--border-width) solid var(--border-color);
-            border-radius: var(--border-radius);
-            box-shadow: var(--hard-shadow);
-            max-width: 600px;
             width: 100%;
-            padding: 40px;
+            max-width: 620px;
+
             position: relative;
             z-index: 1;
+
+            padding: 42px;
+
             text-align: center;
+
+            background: var(--secondary-accent);
+
+            border: var(--border-width) solid var(--border-color);
+            border-radius: var(--border-radius);
+
+            box-shadow: var(--hard-shadow);
+
+            animation: cardEnter 0.6s cubic-bezier(.2,.8,.2,1);
         }
 
-        /* Typography */
+        /* =========================================
+           LOGO
+        ========================================= */
+
+        .logo-wrapper {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 14px 18px;
+            margin-bottom: 28px;
+
+            background: var(--logo-bg);
+
+            border: var(--border-width) solid var(--border-color);
+            border-radius: var(--border-radius);
+
+            box-shadow: var(--hard-shadow-small);
+
+            transition:
+                transform 0.15s ease,
+                box-shadow 0.15s ease;
+        }
+
+        .logo-wrapper:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 var(--border-color);
+        }
+
+        .logo {
+            display: block;
+
+            width: min(270px, 65vw);
+            height: auto;
+
+            max-height: 90px;
+            object-fit: contain;
+        }
+
+        /* =========================================
+           TAG
+        ========================================= */
+
         .tag {
             display: inline-block;
-            background-color: var(--primary-accent);
+
+            margin-bottom: 22px;
+            padding: 6px 14px;
+
             color: white;
-            font-size: 0.9rem;
-            font-weight: 700;
-            padding: 6px 16px;
+            background: var(--primary-accent);
+
             border: var(--border-width) solid var(--border-color);
             border-radius: 20px;
-            box-shadow: 3px 3px 0px 0px var(--border-color);
-            margin-bottom: 24px;
+
+            box-shadow: var(--hard-shadow-small);
+
+            font-size: 0.82rem;
+            font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
+        /* =========================================
+           TYPOGRAPHY
+        ========================================= */
+
         h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            line-height: 1.1;
             margin-bottom: 16px;
+
+            font-size: clamp(2.7rem, 8vw, 4.5rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -2px;
         }
 
         p {
-            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto 30px;
+
+            font-size: 1.08rem;
             font-weight: 600;
-            margin-bottom: 32px;
             line-height: 1.5;
         }
 
-        /* Form & Inputs */
+        /* =========================================
+           FORM
+        ========================================= */
+
         .notify-form {
             display: flex;
-            gap: 12px;
+            align-items: flex-start;
             justify-content: center;
-            flex-wrap: wrap;
+            gap: 12px;
+
+            width: 100%;
         }
 
         .input-group {
             flex: 1;
-            min-width: 250px;
+            min-width: 0;
         }
 
-        input[type="email"] {
+        .email-input {
             width: 100%;
+
             padding: 16px;
-            font-size: 1rem;
-            font-family: inherit;
-            font-weight: 600;
-            background-color: var(--card-bg);
-            border: var(--border-width) solid var(--border-color);
-            border-radius: var(--border-radius);
-            box-shadow: var(--hard-shadow);
-            outline: none;
-            transition: all 0.2s ease;
-        }
 
-        input[type="email"]:focus {
-            transform: translate(3px, 3px);
-            box-shadow: var(--hard-shadow-hover);
-        }
-
-        button {
-            padding: 16px 32px;
-            font-size: 1rem;
-            font-family: inherit;
-            font-weight: 700;
-            cursor: pointer;
-            background-color: var(--tertiary-accent);
             color: var(--border-color);
+            background: var(--card-bg);
+
             border: var(--border-width) solid var(--border-color);
             border-radius: var(--border-radius);
+
             box-shadow: var(--hard-shadow);
-            transition: all 0.2s ease;
+
+            outline: none;
+
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 600;
+
+            transition:
+                transform 0.15s ease,
+                box-shadow 0.15s ease,
+                border-color 0.15s ease;
         }
 
-        button:hover {
+        .email-input::placeholder {
+            color: #777;
+        }
+
+        .email-input:focus {
             transform: translate(3px, 3px);
-            box-shadow: var(--hard-shadow-hover);
+            box-shadow: 3px 3px 0 var(--border-color);
         }
 
-        /* Mobile Responsiveness */
-        @media (max-width: 480px) {
+        .email-input.invalid {
+            border-color: var(--error);
+
+            animation: shake 0.25s ease;
+        }
+
+        .email-error {
+            display: none;
+
+            margin-top: 8px;
+
+            color: var(--border-color);
+
+            font-size: 0.82rem;
+            font-weight: 700;
+
+            text-align: left;
+        }
+
+        .email-error.visible {
+            display: block;
+        }
+
+        /* =========================================
+           BUTTON
+        ========================================= */
+
+        .notify-button {
+            flex-shrink: 0;
+
+            padding: 16px 28px;
+
+            color: var(--border-color);
+            background: var(--tertiary-accent);
+
+            border: var(--border-width) solid var(--border-color);
+            border-radius: var(--border-radius);
+
+            box-shadow: var(--hard-shadow);
+
+            cursor: pointer;
+
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 700;
+
+            transition:
+                transform 0.12s ease,
+                box-shadow 0.12s ease,
+                background-color 0.15s ease;
+        }
+
+        .notify-button:hover:not(:disabled) {
+            transform: translate(3px, 3px);
+            box-shadow: 3px 3px 0 var(--border-color);
+        }
+
+        .notify-button:active:not(:disabled) {
+            transform: translate(6px, 6px);
+            box-shadow: 0 0 0 var(--border-color);
+        }
+
+        .notify-button:disabled {
+            cursor: wait;
+            opacity: 0.7;
+        }
+
+        .notify-button.success {
+            background: var(--success);
+        }
+
+        /* =========================================
+           ALERT
+        ========================================= */
+
+        .alert {
+            display: none;
+
+            margin-top: 22px;
+            padding: 14px 18px;
+
+            border: var(--border-width) solid var(--border-color);
+            border-radius: var(--border-radius);
+
+            box-shadow: var(--hard-shadow-small);
+
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-align: left;
+
+            animation: alertEnter 0.25s ease;
+        }
+
+        .alert.visible {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .alert.success {
+            background: var(--success);
+        }
+
+        .alert.error {
+            background: var(--error);
+        }
+
+        .alert-icon {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            width: 24px;
+            height: 24px;
+
+            flex-shrink: 0;
+
+            background: var(--border-color);
+            color: white;
+
+            border-radius: 50%;
+
+            font-size: 0.75rem;
+        }
+
+        /* =========================================
+           ANIMATIONS
+        ========================================= */
+
+        @keyframes cardEnter {
+            from {
+                opacity: 0;
+                transform: translateY(20px) rotate(-1deg);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) rotate(0);
+            }
+        }
+
+        @keyframes alertEnter {
+            from {
+                opacity: 0;
+                transform: translateY(-5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-5px);
+            }
+
+            75% {
+                transform: translateX(5px);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes rotateFloat {
+            0%, 100% {
+                transform: rotate(15deg) translateY(0);
+            }
+
+            50% {
+                transform: rotate(25deg) translateY(-7px);
+            }
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+            body {
+                padding: 16px;
+            }
+
             .container {
                 padding: 30px 20px;
             }
-            
-            button {
+
+            .notify-form {
+                flex-direction: column;
+            }
+
+            .input-group {
                 width: 100%;
             }
 
-            .decor-1, .decor-2, .decor-3 {
-                display: none; /* Hide floating decors on very small screens to avoid clutter */
+            .notify-button {
+                width: 100%;
+            }
+
+            h1 {
+                letter-spacing: -1.5px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .decor {
+                display: none;
+            }
+
+            .logo {
+                width: min(230px, 70vw);
             }
         }
     </style>
 </head>
+
 <body>
 
-    <!-- Floating Background Shapes -->
+    <!-- Decorative background elements -->
     <div class="decor decor-1"></div>
     <div class="decor decor-2"></div>
     <div class="decor decor-3">✦</div>
 
-    <!-- Main Content -->
-    <div class="container">
-        <div class="tag">Digital Workshop</div>
-        <h1>Coming Soon</h1>
-        <p>We are currently crafting a brand new experience. Drop your email below to get notified the second we launch.</p>
-        
-        <form class="notify-form" action="#" method="POST" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+    <!-- Main content -->
+    <main class="container">
+
+        <!-- Put logo.png in the same folder as this index.html -->
+        <div class="logo-wrapper">
+            <img
+                src="./logo.png"
+                alt="Digital Workshop"
+                class="logo"
+            >
+        </div>
+
+        <div class="tag">
+            Something is brewing
+        </div>
+
+        <h1>
+            Coming Soon
+        </h1>
+
+        <p>
+            We are currently crafting a brand new experience.
+            Drop your email below and we'll let you know the second we launch.
+        </p>
+
+        <form
+            class="notify-form"
+            id="notifyForm"
+            novalidate
+        >
             <div class="input-group">
-                <input type="email" placeholder="Enter your email address..." required>
+
+                <input
+                    id="email"
+                    class="email-input"
+                    type="email"
+                    name="email"
+                    autocomplete="email"
+                    placeholder="Enter your email address..."
+                    aria-label="Email address"
+                    aria-describedby="emailError"
+                >
+
+                <div
+                    id="emailError"
+                    class="email-error"
+                    role="alert"
+                >
+                    Please enter a valid email address.
+                </div>
+
             </div>
-            <button type="submit">Notify Me</button>
+
+            <button
+                type="submit"
+                class="notify-button"
+                id="notifyButton"
+            >
+                <span id="buttonText">Notify Me</span>
+            </button>
         </form>
-    </div>
+
+        <!-- Uniform status alert -->
+        <div
+            id="alert"
+            class="alert"
+            role="status"
+            aria-live="polite"
+        >
+            <span class="alert-icon" id="alertIcon">✓</span>
+            <span id="alertText"></span>
+        </div>
+
+    </main>
+
+    <script>
+        /*
+         * IMPORTANT:
+         *
+         * Replace this with your Cloudflare Worker URL.
+         *
+         * Example:
+         * https://digital-workshop-signup.yourname.workers.dev
+         */
+        const WORKER_URL = "YOUR_CLOUDFLARE_WORKER_URL";
+
+        const form = document.getElementById("notifyForm");
+        const emailInput = document.getElementById("email");
+        const emailError = document.getElementById("emailError");
+
+        const button = document.getElementById("notifyButton");
+        const buttonText = document.getElementById("buttonText");
+
+        const alertBox = document.getElementById("alert");
+        const alertText = document.getElementById("alertText");
+        const alertIcon = document.getElementById("alertIcon");
+
+
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+
+        function showAlert(type, message) {
+            alertBox.className = "alert visible " + type;
+
+            alertText.textContent = message;
+
+            if (type === "success") {
+                alertIcon.textContent = "✓";
+            } else {
+                alertIcon.textContent = "!";
+            }
+        }
+
+
+        function hideAlert() {
+            alertBox.className = "alert";
+        }
+
+
+        function showValidationError() {
+            emailInput.classList.add("invalid");
+            emailError.classList.add("visible");
+        }
+
+
+        function clearValidationError() {
+            emailInput.classList.remove("invalid");
+            emailError.classList.remove("visible");
+        }
+
+
+        emailInput.addEventListener("input", () => {
+            clearValidationError();
+            hideAlert();
+        });
+
+
+        form.addEventListener("submit", async (event) => {
+
+            event.preventDefault();
+
+            clearValidationError();
+            hideAlert();
+
+            const email = emailInput.value.trim();
+
+            /* Client-side validation */
+            if (!email || !isValidEmail(email)) {
+                showValidationError();
+                emailInput.focus();
+                return;
+            }
+
+            /* Prevent accidental duplicate submissions */
+            button.disabled = true;
+            buttonText.textContent = "Sending...";
+
+            try {
+
+                const response = await fetch(WORKER_URL, {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        email: email
+                    })
+                });
+
+
+                const data = await response.json().catch(() => ({}));
+
+
+                if (!response.ok) {
+                    throw new Error(
+                        data.message || "Something went wrong."
+                    );
+                }
+
+
+                /*
+                 * Success
+                 */
+                showAlert(
+                    "success",
+                    "EMAIL SENT SUCCESSFULLY"
+                );
+
+                emailInput.value = "";
+
+                buttonText.textContent = "Subscribed";
+                button.classList.add("success");
+
+
+            } catch (error) {
+
+                console.error("Signup error:", error);
+
+                showAlert(
+                    "error",
+                    "COULDN'T SEND EMAIL — PLEASE TRY AGAIN"
+                );
+
+                buttonText.textContent = "Try Again";
+
+            } finally {
+
+                /*
+                 * Keep successful button state disabled.
+                 * Re-enable it after an error.
+                 */
+                if (!button.classList.contains("success")) {
+                    button.disabled = false;
+                }
+            }
+
+        });
+    </script>
 
 </body>
 </html>
